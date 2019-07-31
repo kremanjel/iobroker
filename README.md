@@ -37,7 +37,7 @@ This also works with mounting a folder containing an existing ioBroker-installat
 
 MIT License
 
-Copyright (c) 2017 Jan Merkel
+Copyright (c) 2019 Jan Merkel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
