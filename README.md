@@ -30,6 +30,9 @@ This also works with mounting a folder containing an existing ioBroker-installat
 
 ## Changelog
 
+### v0.0.2 (2019-12-28)
+* adjusted node version from lts to 10 as lts is currently bound to version 12 which is not yet fully supported by iobroker
+
 ### v0.0.1 (2019-07-31)
 * project started / initial release
 
