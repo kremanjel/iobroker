@@ -1,4 +1,4 @@
-FROM node:lts-slim
+FROM node:10-slim
 
 MAINTAINER Jan Merkel
 
