@@ -71,8 +71,6 @@ ENV DEBIAN_FRONTEND="teletype" \
 	LC_ALL="de_DE.UTF-8" \
 	TZ="Europe/Berlin" \
 	PACKAGES="nano" \
-        SETGID=1000 \
-        SETUID=1000 \
 	AVAHI="false"
 
 # Setting up EXPOSE for Admin
