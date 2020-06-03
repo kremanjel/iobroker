@@ -220,21 +220,6 @@ then
   fi
 fi
 
-
-# Checking ENV for Z-WAVE
-if [ "$zwave" != "" ]
-then
-  if [ "$zwave" = "true" ]
-  then
-    echo "Z-Wave is activated by ENV."
-    chmod 755 /opt/scripts/setup_zwave.sh
-    bash /opt/scripts/setup_zwave.sh
-    echo "Done."
-    echo ' '
-  fi
-fi
-
-
 # checking ENV for USBDEVICES
 if [ "$usbdevices" != "" ]
 then
@@ -320,39 +305,6 @@ then
   fi
   echo ' '
 fi
-
-
-# Checking for Userscripts in /opt/userscripts
-if [ `find /opt/userscripts -type f | wc -l` -lt 1 ]
-then
-  echo "There is no data detected in /opt/userscripts. Restoring exapmple userscripts..."
-  tar -xf /opt/initial_userscripts.tar -C /
-  chmod 755 /opt/userscripts/userscript_firststart_example.sh
-  chmod 755 /opt/userscripts/userscript_everystart_example.sh
-  echo "Done."
-  echo ' '
-elif [ -f /opt/userscripts/userscript_firststart.sh ] || [ -f /opt/userscripts/userscript_everystart.sh ]
-then
-  if [ -f /opt/userscripts/userscript_firststart.sh ] && [ -f /opt/.firstrun ]
-  then
-    echo "Userscript for first start detected and this is the first start of a new container."
-    echo "Running userscript_firststart.sh..."
-    chmod 755 /opt/userscripts/userscript_firststart.sh
-    bash /opt/userscripts/userscript_firststart.sh
-    rm -f /opt/.firstrun
-    echo "Done."
-    echo ' '
-  fi
-  if [ -f /opt/userscripts/userscript_everystart.sh ]
-  then
-    echo "Userscript for every start detected. Running userscript_everystart.sh..."
-    chmod 755 /opt/userscripts/userscript_everystart.sh
-    bash /opt/userscripts/userscript_everystart.sh
-    echo "Done."
-    echo ' '
-  fi
-fi
-
 
 sleep 5
 
