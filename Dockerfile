@@ -36,21 +36,14 @@ RUN sed -i 's/^# *\(de_DE.UTF-8\)/\1/' /etc/locale.gen \
 
 # Create scripts directorys and copy scripts
 RUN mkdir -p /opt/scripts/ \
-    && mkdir -p /opt/userscripts/ \
-    && chmod 777 /opt/scripts/ \
-    && chmod 777 /opt/userscripts/
+    && chmod 777 /opt/scripts/
 WORKDIR /opt/scripts/
 COPY scripts/iobroker_startup.sh iobroker_startup.sh
 COPY scripts/setup_avahi.sh setup_avahi.sh
 COPY scripts/setup_packages.sh setup_packages.sh
-COPY scripts/setup_zwave.sh setup_zwave.sh
 RUN chmod +x iobroker_startup.sh \
-	&& chmod +x setup_avahi.sh \
-    && chmod +x setup_packages.sh \
-    && chmod +x setup_zwave.sh
-WORKDIR /opt/userscripts/
-COPY scripts/userscript_firststart_example.sh userscript_firststart_example.sh
-COPY scripts/userscript_everystart_example.sh userscript_everystart_example.sh
+    && chmod +x setup_avahi.sh \
+    && chmod +x setup_packages.sh
 
 # Install ioBroker
 WORKDIR /
@@ -65,8 +58,7 @@ WORKDIR /opt/iobroker/
 RUN npm install -g node-gyp
 
 # Backup initial ioBroker and userscript folder
-RUN tar -cf /opt/initial_iobroker.tar /opt/iobroker \
-    && tar -cf /opt/initial_userscripts.tar /opt/userscripts
+RUN tar -cf /opt/initial_iobroker.tar /opt/iobroker
 
 # Setting up iobroker-user (shell and home directory)
 RUN chsh -s /bin/bash iobroker \
